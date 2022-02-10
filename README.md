@@ -2,8 +2,6 @@
 
 A simple Timezone Converter app. Allows you to add cities to your list of time zones and live convert the time for you. The list of cities is saved in a postgres DB, and your selection of cities is written right in the DB. Each instance of this app is intended for one user only. The ecto setup contains a seed with a couple dozen cities. If you'd like to add more, you can simply expand the seed (/priv/repo/seeds.exs) list following the same format. Use Tzdata.zone_list() inside iex to get a list of compatible cities, as some cities are not considered 'time zone cities'. If you'd still like to add your own city to the Timezone Converter app, you can simply enter your city name into :city_name, and then enter the nearest time zone city into :time_zone. Enjoy!
 
-The uploaded repo lacks the assets/node_modules folder for space purposes, so be sure to follow the below setup instructions carefully to get everything you need.
-
 
 This project was built with:
 - Elixir 1.11.2
