@@ -11,6 +11,8 @@ This project was built with:
 - Nodejs 16
 
 
+## Instructions
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
@@ -36,5 +38,7 @@ lau/calendar: https://github.com/lau/calendar
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+## Screenshot
 
 ![alt text](/assets/images/demo1.png)
