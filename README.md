@@ -37,4 +37,4 @@ lau/calendar: https://github.com/lau/calendar
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
 
-![alt text](https://github.com/mpmartinek/TzConverter/tree/main/assets/images/demo1.png)
+![alt text](/assets/images/demo1.png)
