@@ -36,3 +36,5 @@ lau/calendar: https://github.com/lau/calendar
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+![alt text](https://github.com/mpmartinek/TzConverter/tree/main/assets/images/demo1.png?raw=true)
