@@ -25,7 +25,9 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 
 Special thanks to:
+
 lau/tzdata: https://github.com/lau/tzdata
+
 lau/calendar: https://github.com/lau/calendar
 
 
