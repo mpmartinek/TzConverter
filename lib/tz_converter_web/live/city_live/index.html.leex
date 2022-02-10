@@ -1,0 +1,109 @@
+
+<!-- ------------------------ -->
+<!--  CLOCK AND USER TIMEZONE -->
+<!-- ------------------------ -->
+
+<div class="tz_wrap">
+<br>
+<h1>Current time in your region: <%= @now_sec %></h1>
+<h3>Your timezone: <%= @user_timezone %> (...or so your browser says)</h3>
+
+<!--
+<form id="set-time" phx-submit="set_time">
+  <fieldset>
+    <label for="nameField">Manually set time to convert</label>
+    <input type="text" pattern="\d\d:\d\d" required name="custom_time" value="<%= "" %>"
+    placeholder="<%= @now_min %> (enter time in XX:XX format and press ENTER)"
+    autofocus autocomplete="off" />
+    <input class="button-primary" type="submit" value="Set Time">
+    <input phx-click="start_city_ticker" class="button" type="button" value="Use current time">
+  </fieldset>
+</form>
+-->
+
+ <!-- ---------------------- -->
+ <!-- ----- TIME SETTER ---- -->
+ <!-- ---------------------- -->
+
+<%= f = form_for @changeset, "#",
+  id: "set-time",
+  phx_change: "validate_custom_time",
+  phx_submit: "set_custom_time" %>
+
+  <%= label f, "Manually set time to convert" %>
+  <%= time_input f, :custom_time, [id: "user-set-time", value: @custom_time.custom_time || @now_min ] %>
+  <%= error_tag f, :custom_time %>
+
+  <%= submit "Set time", phx_disable_with: "Setting..." %>
+  <input id="use-current-time" phx-click="start_city_ticker" class="button" type="button" value="Use current time">
+</form>
+
+<!-- -------------------- -->
+<!-- ----- TIMEZONES ---- -->
+<!-- -------------------- -->
+
+<h1>Your timezones</h1>
+<table>
+  <thead>
+    <tr>
+      <th>City name</th>
+      <th>Time zone</th>
+      <th>Current time</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="cities">
+    <%= for selected_city <- @selected_cities_w_time do %>
+      <tr id="selected_city-<%= selected_city.id %>">
+        <td id="selected-city-name"><%= selected_city.city_name %></td>
+        <td><%= selected_city.time_zone %></td>
+        <td id="selected-city-time-<%= selected_city.id %>"><%= selected_city.current_time %></td>
+        <td>
+          <input id="deselect-city-<%= selected_city.id %>" phx-click="deselect_city" phx-value-id="<%=selected_city.id%>" class="button" type="button" value="Remove">
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- ------------------ -->
+<!-- CITY SEARCH MODULE -->
+<!-- ------------------ -->
+
+<form id="search-city" phx-change="search_city">
+  <fieldset>
+    <label for="nameField">Add city</label>
+    <input id="city-search-query" type="text" name="city_search_query" value="<%= @city_search_query %>"
+    placeholder="e.g. Tokyo"
+    autofocus autocomplete="off" />
+  </fieldset>
+</form>
+
+<!-- -------------- -->
+<!-- SEARCH RESULTS -->
+<!-- -------------- -->
+
+<%= unless @searched_city_results == [] do %>
+  <h2>Search Results</h2>
+  <table id="search-results">
+    <thead>
+      <tr>
+        <th>City name</th>
+        <th>Time zone</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for searched_city <- @searched_city_results do %>
+      <tr>
+        <td id="search-results-city-name"><%= searched_city.city_name %></td>
+        <td><%= searched_city.time_zone %></td>
+        <td>
+          <span><input id="select-city" phx-click="select_city" phx-value-id="<%=searched_city.id%>" class="button" type="button" value="Add"></span>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+</div>
